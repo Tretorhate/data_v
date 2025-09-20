@@ -92,7 +92,8 @@ SELECT
         ELSE 'Balanced'
     END as map_balance
 FROM maps_stats 
-ORDER BY times_played DESC;
+ORDER BY times_played DESC
+LIMIT 10;
 
 -- Topic 3: Agent Utilization and Performance
 -- LEFT JOIN: All agents and their utilization rates
@@ -105,7 +106,8 @@ FROM agents_stats ag
 LEFT JOIN detailed_matches_player_stats dmps 
     ON ag.agent_name = dmps.agent
 GROUP BY ag.agent_name, ag.total_utilization
-ORDER BY ag.total_utilization DESC;
+ORDER BY ag.total_utilization DESC
+LIMIT 10;
 
 -- Topic 4: Team Economy Performance
 -- RIGHT JOIN: Economy data for all teams
@@ -117,7 +119,8 @@ SELECT
 FROM economy_data ed
 RIGHT JOIN player_stats ps ON ed."Team" = ps.team
 GROUP BY ed."Team"
-ORDER BY avg_pistol_wins DESC;
+ORDER BY avg_pistol_wins DESC
+LIMIT 10;
 
 -- Topic 5: Match Duration and Map Performance
 -- INNER JOIN: Match details with map performance
@@ -133,7 +136,8 @@ SELECT
 FROM detailed_matches_overview dmo
 INNER JOIN detailed_matches_maps dmm 
     ON dmo.match_id = dmm.match_id
-ORDER BY dmo.match_title, dmm.map_order;
+ORDER BY dmo.match_title, dmm.map_order
+LIMIT 10;
 
 -- Topic 6: Player Performance by Map
 -- Complex JOIN: Player stats across maps
@@ -151,7 +155,8 @@ SELECT
 FROM detailed_matches_player_stats dmps
 INNER JOIN maps_stats ms ON dmps.map_name = ms.map_name
 WHERE dmps.stat_type = 'map'
-ORDER BY dmps.rating DESC, dmps.map_name;
+ORDER BY dmps.rating DESC, dmps.map_name
+LIMIT 10;
 
 -- Topic 7: Clutch Performance Analysis
 -- Players' clutch performance (1vX situations)
@@ -168,7 +173,7 @@ FROM player_stats
 WHERE clutches IS NOT NULL 
     AND clutches != ''
 ORDER BY rating DESC
-LIMIT 20;
+LIMIT 10;
 
 -- Topic 8: Headshot Accuracy Leaders
 -- Best headshot percentage
@@ -183,7 +188,7 @@ SELECT
 FROM player_stats 
 WHERE hs_percent IS NOT NULL
 ORDER BY hs_percent DESC
-LIMIT 15;
+LIMIT 10;
 
 -- Topic 9: First Kill/First Death Impact
 -- Players' impact on round starts
@@ -198,7 +203,7 @@ SELECT
 FROM player_stats 
 WHERE first_kills > 0 OR first_deaths > 0
 ORDER BY fk_fd_diff DESC
-LIMIT 15;
+LIMIT 10;
 
 -- Topic 10: Tournament Overview and Match Statistics
 -- Tournament statistics
@@ -230,4 +235,5 @@ UNION ALL
 SELECT 
     'Highest Rating',
     ROUND(MAX(rating), 2)::text
-FROM player_stats;
+FROM player_stats
+LIMIT 10;

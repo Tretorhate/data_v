@@ -28,7 +28,6 @@ def execute_query(conn, query, description):
         print(f"QUERY: {description}")
         print(f"{'='*60}")
         
-        # Execute query and get results
         df = pd.read_sql_query(query, conn)
         
         if df.empty:
@@ -42,6 +41,34 @@ def execute_query(conn, query, description):
     except Exception as e:
         print(f"Error executing query: {e}")
 
+def execute_sql_file(conn, file_path):
+    """Execute all SQL commands from a file and display results."""
+    try:
+        with open(file_path, 'r') as file:
+            sql_commands = file.read()
+        
+        with conn.cursor() as cursor:
+            queries = sql_commands.split(';')  
+            for query in queries:
+                query = query.strip()
+                if query:  
+                    print(f"\nExecuting query: {query[:50]}...")  
+                    cursor.execute(query)
+                    conn.commit()
+
+             
+                    if cursor.description:  
+                        columns = [desc[0] for desc in cursor.description]
+                        rows = cursor.fetchall()
+                        df = pd.DataFrame(rows, columns=columns)
+                        print(df.to_string(index=False))
+                    else:
+                        print("Query executed successfully, no results to display.")
+
+            print(f"\nSuccessfully executed all queries in file: {file_path}")
+    except Exception as e:
+        print(f"Error executing SQL file {file_path}: {e}")
+
 def main():
     """Main function to run all analysis queries"""
     print("VALORANT CHAMPIONS 2024 DATA ANALYSIS")
@@ -52,6 +79,9 @@ def main():
         return
     
     try:
+        # Execute queries.sql file
+        execute_sql_file(conn, 'queries.sql')
+        
         # 1. Basic Data Exploration
         print("\n1. BASIC DATA EXPLORATION")
         print("-" * 30)

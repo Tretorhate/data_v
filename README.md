@@ -1,4 +1,5 @@
 # Valorant Champions 2024 Data Analysis Project
+
 ## Company Information
 
 **Company:** Rito Games Analytics Division
@@ -49,7 +50,13 @@ The project uses PostgreSQL with 10 interconnected tables:
 - `performance_data` - Detailed performance metrics
 - `detailed_matches_overview` - Comprehensive match summaries
 - `detailed_matches_player_stats` - Player stats per match
-- `detailed_matches_maps` - Map-specific match data
+- `detailed_matches_maps` - Map-specific match data'
+
+## Entity Relationship Diagram
+
+Below is the ERD for the database schema used in this project:
+
+![Entity Relationship Diagram](images/ERD_data_v.jpg)
 
 ## Quick Start
 
@@ -142,27 +149,36 @@ DB_CONFIG = {
 
 ```
 data_v/
-├── all_csv/                          # CSV data files
-│   ├── event_info.csv
-│   ├── matches.csv
-│   ├── player_stats.csv
-│   ├── maps_stats.csv
+├── .git/
+├── .gitignore
+├── .venv/
+├── all_csv/
 │   ├── agents_stats.csv
-│   ├── economy_data.csv
-│   ├── performance_data.csv
+│   ├── columns_description.csv
+│   ├── Dataset_info.md
+│   ├── detailed_matches_maps.csv
 │   ├── detailed_matches_overview.csv
 │   ├── detailed_matches_player_stats.csv
-│   ├── detailed_matches_maps.csv
-│   └── columns_description.csv
-├── setup_code/                       # Database setup scripts
-│   ├── creating_sql.sql             # PostgreSQL schema
-│   ├── setup_database.py            # Database creation
-│   ├── import_csv.py                # CSV import script
-│   ├── reset_and_import.py          # Database reset utility
-│   └── debug_import.py              # Debugging utility
-├── requirements.txt                  # Python dependencies
-├── README.md                        # This file
-└── Dataset_info.md                  # Detailed dataset information
+│   ├── economy_data.csv
+│   ├── event_info.csv
+│   ├── maps_stats.csv
+│   ├── matches.csv
+│   ├── performance_data.csv
+│   └── player_stats.csv
+├── dbdiagram_io_code.txt
+├── images/
+│   ├── ERD_data_v.jpg
+├── link_to_github.txt
+├── main.py
+├── queries.sql
+├── README.md
+├── requirements.txt
+└── setup_code/
+    ├── creating_sql.sql
+    ├── debug_import.py
+    ├── import_csv.py
+    ├── reset_and_import.py
+    └── set_up.png
 ```
 
 ## Setup Scripts Explained
@@ -294,65 +310,3 @@ pip install -r requirements.txt
 # Run the main analysis script
 python main.py
 ```
-
-This will execute various SQL queries and display formatted results including:
-
-- Basic data exploration
-- Filtering, aggregation, and sorting examples
-- Different types of JOIN operations (INNER, LEFT, RIGHT)
-- 10 analytical topics covering player performance, map analysis, agent utilization, and more
-
-## Query Execution Results
-
-The following images show the results of executing the queries from `queries.sql`:
-
-### Basic Data Exploration Queries
-
-**1a. Data Structure Overview - First 10 rows from each table:**
-![Data Structure Overview](images/1a.png)
-
-**1b. Top 10 Players by Rating (100+ rounds):**
-![Top Players by Rating](images/1b.png)
-
-**1c. Team Statistics with Aggregation:**
-![Team Statistics](images/1c.png)
-
-**1d. Player Performance with Match Data (INNER JOIN):**
-![Player Performance with Match Data](images/1d.png)
-
-### Analytical Topics Results
-
-**Topic 1: Top Performing Players by Overall Rating**
-![Top Performing Players](images/2.png)
-
-**Topic 2: Map Win Rate Analysis**
-![Map Win Rate Analysis](images/3.png)
-
-**Topic 3: Agent Utilization and Performance**
-![Agent Utilization](images/4.png)
-
-**Topic 4: Team Economy Performance**
-![Team Economy Performance](images/5.png)
-
-**Topic 5: Match Duration and Map Performance**
-![Match Duration and Map Performance](images/6.png)
-
-**Topic 6: Player Performance by Map**
-![Player Performance by Map](images/7.png)
-
-**Topic 7: Clutch Performance Analysis**
-![Clutch Performance Analysis](images/8.png)
-
-**Topic 8: Headshot Accuracy Leaders**
-![Headshot Accuracy Leaders](images/9.png)
-
-**Topic 9: First Kill/First Death Impact**
-![First Kill/First Death Impact](images/10.png)
-
-## Database Setup Visualizations
-
-**Database Tables Structure:**
-![Database Tables](images/tables.png)
-
-**Create Tables Query Execution:**
-![Create Tables Execution](images/create_tables.png)
