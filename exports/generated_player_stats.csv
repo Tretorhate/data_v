@@ -1,0 +1,61 @@
+match_id,event_name,event_stage,match_date,team1,team2,score_overall,player_name,player_id,player_team,stat_type,agent,rating,acs,k,d,a,kd_diff,kast,adr,hs_percent,fk,fd,fk_fd_diff,map_name,map_winner
+378837,Valorant Champions 2024,Group Stage,2025-10-11,TH,KRÜ,1-2,MiniBoo,18350,TH,map,Fade,0.79,347,27,12,7,15,71,141,29,2,7,-5,Ascent,KRÜ
+378837,Valorant Champions 2024,Group Stage,2025-10-11,TH,KRÜ,1-2,Wo0t,21328,TH,map,Iso,0.97,272,17,21,4,-4,77,172,28,7,4,3,Ascent,KRÜ
+378837,Valorant Champions 2024,Group Stage,2025-10-11,TH,KRÜ,1-2,Boo,1144,TH,map,Breach,1.05,276,15,17,6,-2,63,109,17,3,7,-4,Ascent,KRÜ
+378837,Valorant Champions 2024,Group Stage,2025-10-11,TH,KRÜ,1-2,benjyfishy,29873,TH,map,Reyna,1.19,152,17,15,5,2,65,101,16,0,7,-7,Ascent,KRÜ
+378837,Valorant Champions 2024,Group Stage,2025-10-11,TH,KRÜ,1-2,RieNs,10971,TH,map,Kayo,0.75,166,22,13,8,9,65,196,30,4,4,0,Ascent,KRÜ
+378837,Valorant Champions 2024,Group Stage,2025-10-11,TH,KRÜ,1-2,mta,36169,KRÜ,map,Waylay,0.72,308,13,16,2,-3,71,139,34,7,7,0,Ascent,KRÜ
+378837,Valorant Champions 2024,Group Stage,2025-10-11,TH,KRÜ,1-2,Melser,1311,KRÜ,map,Fade,1.11,269,16,15,8,1,76,196,28,2,8,-6,Ascent,KRÜ
+378837,Valorant Champions 2024,Group Stage,2025-10-11,TH,KRÜ,1-2,keznit,2462,KRÜ,map,Killjoy,0.77,231,23,23,4,0,57,104,25,1,0,1,Ascent,KRÜ
+378837,Valorant Champions 2024,Group Stage,2025-10-11,TH,KRÜ,1-2,Shyy,24007,KRÜ,map,Killjoy,1.19,167,25,8,7,17,67,110,15,6,1,5,Ascent,KRÜ
+378837,Valorant Champions 2024,Group Stage,2025-10-11,TH,KRÜ,1-2,heat,8673,KRÜ,map,Brimstone,0.92,180,23,21,9,2,71,111,21,4,8,-4,Ascent,KRÜ
+378838,Valorant Champions 2024,Group Stage,2025-10-11,TE,LEV,0-2,LuoK1ng,3045,TE,map,Sova,1.1,222,21,21,6,0,59,114,32,8,6,2,Abyss,LEV
+378838,Valorant Champions 2024,Group Stage,2025-10-11,TE,LEV,0-2,heybay,4712,TE,map,Harbor,0.88,182,10,9,6,1,71,103,17,5,0,5,Abyss,LEV
+378838,Valorant Champions 2024,Group Stage,2025-10-11,TE,LEV,0-2,Biank,3021,TE,map,Tejo,0.77,350,28,9,11,19,62,161,17,7,0,7,Abyss,LEV
+378838,Valorant Champions 2024,Group Stage,2025-10-11,TE,LEV,0-2,Kai,37494,TE,map,Sova,1.11,239,20,23,7,-3,68,109,17,6,4,2,Abyss,LEV
+378838,Valorant Champions 2024,Group Stage,2025-10-11,TE,LEV,0-2,FengF,4770,TE,map,Vyse,0.7,312,24,21,12,3,84,149,32,2,5,-3,Abyss,LEV
+378838,Valorant Champions 2024,Group Stage,2025-10-11,TE,LEV,0-2,tex,1818,LEV,map,Deadlock,0.94,303,27,13,8,14,68,132,16,8,8,0,Abyss,LEV
+378838,Valorant Champions 2024,Group Stage,2025-10-11,TE,LEV,0-2,C0M,619,LEV,map,Jett,1.2,294,22,24,8,-2,75,192,32,5,3,2,Abyss,LEV
+378838,Valorant Champions 2024,Group Stage,2025-10-11,TE,LEV,0-2,kiNgg,8549,LEV,map,Tejo,1.11,164,27,24,9,3,73,163,18,7,2,5,Abyss,LEV
+378838,Valorant Champions 2024,Group Stage,2025-10-11,TE,LEV,0-2,Mazino,7603,LEV,map,Cypher,0.94,293,29,12,8,17,55,119,22,3,6,-3,Abyss,LEV
+378838,Valorant Champions 2024,Group Stage,2025-10-11,TE,LEV,0-2,aspas,8480,LEV,map,Clove,0.7,227,30,17,2,13,80,172,16,2,3,-1,Abyss,LEV
+378839,Valorant Champions 2024,Group Stage,2025-10-11,GEN,DRX,1-2,Meteor,13039,GEN,map,Deadlock,0.76,180,14,9,9,5,77,158,28,8,4,4,All Maps,DRX
+378839,Valorant Champions 2024,Group Stage,2025-10-11,GEN,DRX,1-2,Karon,34974,GEN,map,Reyna,1.03,194,29,18,7,11,64,186,28,4,5,-1,All Maps,DRX
+378839,Valorant Champions 2024,Group Stage,2025-10-11,GEN,DRX,1-2,Munchkin,2489,GEN,map,Skye,1.07,238,23,14,6,9,58,114,17,5,1,4,All Maps,DRX
+378839,Valorant Champions 2024,Group Stage,2025-10-11,GEN,DRX,1-2,Lakia,773,GEN,map,Cypher,1.28,264,25,15,2,10,71,199,32,1,4,-3,All Maps,DRX
+378839,Valorant Champions 2024,Group Stage,2025-10-11,GEN,DRX,1-2,t3xture,9196,GEN,map,Chamber,0.73,271,30,25,3,5,69,139,30,3,6,-3,All Maps,DRX
+378839,Valorant Champions 2024,Group Stage,2025-10-11,GEN,DRX,1-2,MaKo,4462,DRX,map,Tejo,0.77,326,20,22,5,-2,61,177,23,1,4,-3,All Maps,DRX
+378839,Valorant Champions 2024,Group Stage,2025-10-11,GEN,DRX,1-2,Foxy9,11600,DRX,map,Omen,1.28,214,23,25,8,-2,56,154,29,3,8,-5,All Maps,DRX
+378839,Valorant Champions 2024,Group Stage,2025-10-11,GEN,DRX,1-2,Flashback,35013,DRX,map,Yoru,0.83,272,25,14,7,11,56,128,27,4,0,4,All Maps,DRX
+378839,Valorant Champions 2024,Group Stage,2025-10-11,GEN,DRX,1-2,BeYN,4678,DRX,map,Vyse,1.29,307,11,22,10,-11,68,139,17,7,3,4,All Maps,DRX
+378839,Valorant Champions 2024,Group Stage,2025-10-11,GEN,DRX,1-2,BuZz,804,DRX,map,Reyna,1.0,246,25,14,12,11,67,110,18,2,8,-6,All Maps,DRX
+378840,Valorant Champions 2024,Group Stage,2025-10-11,FUT,TE,2-1,qRaxs,1139,FUT,map,Harbor,1.2,260,23,10,5,13,65,117,16,8,6,2,Haven,FUT
+378840,Valorant Champions 2024,Group Stage,2025-10-11,FUT,TE,2-1,cNed,573,FUT,map,Breach,0.77,252,28,8,10,20,55,179,31,4,1,3,Haven,FUT
+378840,Valorant Champions 2024,Group Stage,2025-10-11,FUT,TE,2-1,AtaKaptan,6510,FUT,map,Phoenix,1.29,173,20,9,12,11,74,172,22,1,6,-5,Haven,FUT
+378840,Valorant Champions 2024,Group Stage,2025-10-11,FUT,TE,2-1,MrFaliN,8044,FUT,map,Fade,0.82,242,13,16,3,-3,70,146,28,2,3,-1,Haven,FUT
+378840,Valorant Champions 2024,Group Stage,2025-10-11,FUT,TE,2-1,yetujey,8369,FUT,map,Clove,1.12,327,22,14,7,8,59,107,15,1,5,-4,Haven,FUT
+378840,Valorant Champions 2024,Group Stage,2025-10-11,FUT,TE,2-1,Biank,3021,TE,map,Vyse,1.08,248,17,23,4,-6,73,130,32,2,6,-4,Haven,FUT
+378840,Valorant Champions 2024,Group Stage,2025-10-11,FUT,TE,2-1,FengF,4770,TE,map,Viper,1.04,231,21,19,12,2,81,172,22,3,5,-2,Haven,FUT
+378840,Valorant Champions 2024,Group Stage,2025-10-11,FUT,TE,2-1,LuoK1ng,3045,TE,map,Clove,0.74,255,30,17,2,13,57,193,18,2,8,-6,Haven,FUT
+378840,Valorant Champions 2024,Group Stage,2025-10-11,FUT,TE,2-1,Kai,37494,TE,map,Yoru,1.14,278,23,21,4,2,62,160,19,3,1,2,Haven,FUT
+378840,Valorant Champions 2024,Group Stage,2025-10-11,FUT,TE,2-1,heybay,4712,TE,map,Neon,0.82,347,13,13,2,0,76,183,34,4,4,0,Haven,FUT
+378841,Valorant Champions 2024,Group Stage,2025-10-11,FPX,TH,0-2,AAAAY,19530,FPX,map,Iso,1.29,244,12,13,5,-1,66,127,20,1,3,-2,Abyss,TH
+378841,Valorant Champions 2024,Group Stage,2025-10-11,FPX,TH,0-2,Lysoar,37489,FPX,map,Tejo,0.89,164,29,14,9,15,82,182,28,4,8,-4,Abyss,TH
+378841,Valorant Champions 2024,Group Stage,2025-10-11,FPX,TH,0-2,Autumn,872,FPX,map,Viper,1.06,290,28,19,11,9,69,191,34,1,1,0,Abyss,TH
+378841,Valorant Champions 2024,Group Stage,2025-10-11,FPX,TH,0-2,BerLIN,7857,FPX,map,Vyse,1.08,253,21,19,8,2,65,114,17,6,4,2,Abyss,TH
+378841,Valorant Champions 2024,Group Stage,2025-10-11,FPX,TH,0-2,Life,3028,FPX,map,Brimstone,1.05,276,21,21,5,0,60,145,32,5,4,1,Abyss,TH
+378841,Valorant Champions 2024,Group Stage,2025-10-11,FPX,TH,0-2,benjyfishy,29873,TH,map,Brimstone,1.18,156,25,15,2,10,74,133,24,3,4,-1,Abyss,TH
+378841,Valorant Champions 2024,Group Stage,2025-10-11,FPX,TH,0-2,Wo0t,21328,TH,map,Harbor,1.12,293,23,13,7,10,70,170,23,0,0,0,Abyss,TH
+378841,Valorant Champions 2024,Group Stage,2025-10-11,FPX,TH,0-2,MiniBoo,18350,TH,map,Brimstone,1.29,256,24,11,2,13,79,142,24,5,5,0,Abyss,TH
+378841,Valorant Champions 2024,Group Stage,2025-10-11,FPX,TH,0-2,Boo,1144,TH,map,Sage,0.99,251,19,21,11,-2,68,164,27,4,8,-4,Abyss,TH
+378841,Valorant Champions 2024,Group Stage,2025-10-11,FPX,TH,0-2,RieNs,10971,TH,map,Omen,1.0,311,24,25,7,-1,59,127,28,6,2,4,Abyss,TH
+378842,Valorant Champions 2024,Group Stage,2025-10-11,DRX,KRÜ,0-2,MaKo,4462,DRX,map,Harbor,1.2,285,29,14,3,15,68,120,30,1,0,1,Ascent,KRÜ
+378842,Valorant Champions 2024,Group Stage,2025-10-11,DRX,KRÜ,0-2,BuZz,804,DRX,map,Tejo,1.06,295,19,13,8,6,69,146,31,7,2,5,Ascent,KRÜ
+378842,Valorant Champions 2024,Group Stage,2025-10-11,DRX,KRÜ,0-2,Flashback,35013,DRX,map,Chamber,0.88,214,28,23,10,5,62,148,18,8,3,5,Ascent,KRÜ
+378842,Valorant Champions 2024,Group Stage,2025-10-11,DRX,KRÜ,0-2,Foxy9,11600,DRX,map,Tejo,0.78,346,22,24,2,-2,77,135,17,7,6,1,Ascent,KRÜ
+378842,Valorant Champions 2024,Group Stage,2025-10-11,DRX,KRÜ,0-2,BeYN,4678,DRX,map,Viper,0.82,274,18,24,5,-6,69,148,20,2,3,-1,Ascent,KRÜ
+378842,Valorant Champions 2024,Group Stage,2025-10-11,DRX,KRÜ,0-2,Melser,1311,KRÜ,map,Killjoy,0.88,307,23,11,6,12,68,103,29,4,0,4,Ascent,KRÜ
+378842,Valorant Champions 2024,Group Stage,2025-10-11,DRX,KRÜ,0-2,mta,36169,KRÜ,map,Clove,0.97,191,12,12,2,0,69,185,29,7,0,7,Ascent,KRÜ
+378842,Valorant Champions 2024,Group Stage,2025-10-11,DRX,KRÜ,0-2,keznit,2462,KRÜ,map,Jett,1.29,312,18,19,3,-1,65,139,21,0,1,-1,Ascent,KRÜ
+378842,Valorant Champions 2024,Group Stage,2025-10-11,DRX,KRÜ,0-2,heat,8673,KRÜ,map,Cypher,0.8,253,21,13,9,8,82,112,25,5,4,1,Ascent,KRÜ
+378842,Valorant Champions 2024,Group Stage,2025-10-11,DRX,KRÜ,0-2,Shyy,24007,KRÜ,map,Kayo,1.18,162,30,10,8,20,80,150,35,1,0,1,Ascent,KRÜ

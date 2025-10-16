@@ -1,5 +1,4 @@
 # Valorant Champions 2024 Data Analysis Project
-
 ## Company Information
 
 **Company:** Rito Games Analytics Division
@@ -116,6 +115,36 @@ Below is the ERD for the database schema used in this project:
    python setup_code/import_csv.py
    ```
 
+### Team Headquarters (Geolocation) Import
+
+This project previously included several geo tables and Superset exports. These have been removed and replaced with a simplified `team_headquarters` table storing each team's headquarters coordinates.
+
+1. Prepare the CSV file at `exports/teams_headquarters.csv` with columns:
+
+   - `team`
+   - `latitude`
+   - `longitude`
+
+   Example:
+
+   ```csv
+   team,latitude,longitude
+   Team Alpha,37.7749,-122.4194
+   Team Beta,51.5074,-0.1278
+   ```
+
+2. Run the importer (this will drop legacy geo tables if present):
+
+   ```bash
+   python setup_code/import_headquarters.py
+   ```
+
+3. Verify the import:
+
+   ```sql
+   SELECT * FROM team_headquarters LIMIT 10;
+   ```
+
 ## Configuration
 
 ### Database Configuration
@@ -149,9 +178,6 @@ DB_CONFIG = {
 
 ```
 data_v/
-├── .git/
-├── .gitignore
-├── .venv/
 ├── all_csv/
 │   ├── agents_stats.csv
 │   ├── columns_description.csv
@@ -165,20 +191,35 @@ data_v/
 │   ├── matches.csv
 │   ├── performance_data.csv
 │   └── player_stats.csv
-├── dbdiagram_io_code.txt
+├── charts/
+│   ├── acs_rating_scatter.png
+│   ├── interactive_player_performance_timeline.html
+│   └── ...
+├── exports/
+│   ├── generated_matches.csv
+│   ├── generated_performance_data.csv
+│   ├── generated_player_stats.csv
+│   ├── superset_tournament_venues.csv
+│   ├── teams_headquarters.csv
+│   └── valorant_champions_report_YYYYMMDD_HHMMSS.xlsx
 ├── images/
-│   ├── ERD_data_v.jpg
-├── link_to_github.txt
+│   └── ERD_data_v.jpg
+├── setup_code/
+│   ├── creating_sql.sql
+│   ├── debug_import.py
+│   ├── import_csv.py
+│   ├── import_headquarters.py
+│   └── reset_and_import.py
+├── cleanup_generated_data.py
+├── refresh_data.py
+├── generated_matches_log.csv
+├── demo_simple.py
+├── visualizations_simple.py
 ├── main.py
 ├── queries.sql
-├── README.md
 ├── requirements.txt
-└── setup_code/
-    ├── creating_sql.sql
-    ├── debug_import.py
-    ├── import_csv.py
-    ├── reset_and_import.py
-    └── set_up.png
+├── link_to_github.txt
+└── README.md
 ```
 
 ## Setup Scripts Explained
@@ -310,3 +351,55 @@ pip install -r requirements.txt
 # Run the main analysis script
 python main.py
 ```
+
+## Generated Data Logging & Cleanup
+
+### Overview
+
+The `refresh_data.py` script can auto-generate match data and log each generated match to `generated_matches_log.csv`. Use `cleanup_generated_data.py` to review and remove generated data safely.
+
+### Generate and Log Data
+
+```bash
+python refresh_data.py
+```
+
+Each generated match is appended to `generated_matches_log.csv` with timestamp, match_id, teams, score, map, match_date, and count of inserted player records.
+
+### Review the Log
+
+Open `generated_matches_log.csv` in a spreadsheet editor or text editor to inspect what was generated and when.
+
+### Clean Up Generated Data
+
+```bash
+python cleanup_generated_data.py
+```
+
+Available methods:
+
+- Using the log file: delete all, specific match IDs, or by date range; optionally update the log file after deletion
+- By match ID range
+- By date
+
+Safety features include preview of deletions, confirmation prompts, and cascading deletes across related tables to maintain referential integrity.
+
+### Log File Management
+
+- The log accumulates over time; delete or archive `generated_matches_log.csv` to start fresh
+- A new log file is created automatically on the next run of `refresh_data.py`
+
+## Recent Updates
+
+- Interactive Time Slider (Plotly)
+
+  - Play/Pause animation with cumulative frames so lines connect over time
+  - One point per player per day (best-rated match on that day)
+  - Adjustable player selection via `TIMELINE_PLAYER_LIMIT` in `visualizations_simple.py`
+  - Robust date parsing and guaranteed HTML output (placeholder if no data)
+  - Output: `charts/interactive_player_performance_timeline.html`
+
+- Demo: Adding a Demo Player
+  - `demo_simple.py` now inserts a "Demo Player", regenerates the ACS vs Rating chart, highlights the new point with a red star, then cleans up
+  - Output files: `charts/demo_scatter_plot_YYYYMMDD_HHMMSS.png` (BEFORE/AFTER)
+  - Alternative read-only demo: `demo_chart_regeneration.py` (no DB writes)
