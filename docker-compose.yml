@@ -1,0 +1,68 @@
+version: '3'
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    ports:
+      - '9090:9090'
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+    ports:
+      - '3000:3000'
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin # Change this!
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+  # DB Exporter (example for Postgres; use mysqld-exporter for MySQL)
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter:latest
+    container_name: db_exporter
+    environment:
+      - DATA_SOURCE_NAME=postgresql://postgres:0412@host.docker.internal:5432/data_v?sslmode=disable
+      - PG_EXPORTER_DISABLE_SETTINGS_METRICS=false
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    ports:
+      - '9187:9187'
+    restart: unless-stopped
+
+  # Node Exporter (system metrics)
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node_exporter
+    ports:
+      - '9100:9100'
+    restart: unless-stopped
+
+  # Custom Exporter (your Python script; we'll create this later)
+  custom-exporter:
+    build: ./custom_exporter
+    container_name: custom_exporter
+    environment:
+      - DB_HOST=host.docker.internal
+      - DB_PORT=5432
+      - DB_NAME=data_v
+      - DB_USER=postgres
+      - DB_PASSWORD=0412
+      - METRIC_REFRESH_SECONDS=20
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    ports:
+      - '8000:8000' # Or whatever port you expose
+    restart: unless-stopped
+
+volumes:
+  prometheus_data: {}
+  grafana_data: {}

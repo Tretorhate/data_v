@@ -1,0 +1,19 @@
+global:
+  scrape_interval: 15s  # How often to scrape metrics
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'db_exporter'
+    static_configs:
+      - targets: ['postgres-exporter:9187']  # Or mysqld-exporter port
+
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  - job_name: 'custom_exporter'
+    static_configs:
+      - targets: ['custom-exporter:8000']  # Your custom port

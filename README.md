@@ -64,6 +64,7 @@ Below is the ERD for the database schema used in this project:
 - **PostgreSQL** (version 12 or higher)
 - **Python** (version 3.8 or higher)
 - **pip** (Python package manager)
+- **Docker** and **Docker Compose** (required for Assignment 4 monitoring stack)
 
 ### Installation Steps
 
@@ -178,47 +179,48 @@ DB_CONFIG = {
 
 ```
 data_v/
-├── all_csv/
-│   ├── agents_stats.csv
-│   ├── columns_description.csv
-│   ├── Dataset_info.md
-│   ├── detailed_matches_maps.csv
-│   ├── detailed_matches_overview.csv
-│   ├── detailed_matches_player_stats.csv
-│   ├── economy_data.csv
-│   ├── event_info.csv
-│   ├── maps_stats.csv
-│   ├── matches.csv
-│   ├── performance_data.csv
-│   └── player_stats.csv
-├── charts/
-│   ├── acs_rating_scatter.png
-│   ├── interactive_player_performance_timeline.html
-│   └── ...
-├── exports/
-│   ├── generated_matches.csv
-│   ├── generated_performance_data.csv
-│   ├── generated_player_stats.csv
-│   ├── superset_tournament_venues.csv
-│   ├── teams_headquarters.csv
-│   └── valorant_champions_report_YYYYMMDD_HHMMSS.xlsx
-├── images/
-│   └── ERD_data_v.jpg
-├── setup_code/
-│   ├── creating_sql.sql
-│   ├── debug_import.py
-│   ├── import_csv.py
-│   ├── import_headquarters.py
-│   └── reset_and_import.py
-├── cleanup_generated_data.py
-├── refresh_data.py
-├── generated_matches_log.csv
-├── demo_simple.py
-├── visualizations_simple.py
-├── main.py
-├── queries.sql
-├── requirements.txt
-├── link_to_github.txt
+├── assignment_4/
+│   └── Assignment4/
+│       ├── Assignment4.html
+│       ├── Assignment4.pdf
+│       └── image.png
+├── custom_exporter/
+│   ├── custom_exporter.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── dashboards/
+│   ├── Custom Exporter-*.json
+│   ├── Database Exporter-*.json
+│   └── Node Exporter-*.json
+├── previous_assignments/
+│   ├── all_csv/
+│   │   ├── agents_stats.csv
+│   │   ├── columns_description.csv
+│   │   ├── Dataset_info.md
+│   │   ├── detailed_matches_maps.csv
+│   │   ├── detailed_matches_overview.csv
+│   │   ├── detailed_matches_player_stats.csv
+│   │   ├── economy_data.csv
+│   │   ├── event_info.csv
+│   │   ├── maps_stats.csv
+│   │   ├── matches.csv
+│   │   ├── performance_data.csv
+│   │   └── player_stats.csv
+│   ├── charts/
+│   ├── exports/
+│   ├── images/
+│   ├── setup_code/
+│   ├── cleanup_generated_data.py
+│   ├── refresh_data.py
+│   ├── generated_matches_log.csv
+│   ├── demo_simple.py
+│   ├── visualizations_simple.py
+│   ├── main.py
+│   ├── queries.sql
+│   └── requirements.txt
+├── docker-compose.yml
+├── prometheus.yml
+├── metrics.txt
 └── README.md
 ```
 
@@ -388,6 +390,236 @@ Safety features include preview of deletions, confirmation prompts, and cascadin
 
 - The log accumulates over time; delete or archive `generated_matches_log.csv` to start fresh
 - A new log file is created automatically on the next run of `refresh_data.py`
+
+## Assignment 4: Prometheus & Grafana Monitoring
+
+This project extends the data analysis capabilities with real-time monitoring and metric collection using **Prometheus** and **Grafana**. Unlike previous assignments that focused on database analysis, Assignment 4 emphasizes **system monitoring** and **collecting metrics from different sources**.
+
+### Overview
+
+The monitoring stack consists of three comprehensive dashboards:
+
+1. **Database Exporter Dashboard** (30 points) - Monitors PostgreSQL performance and internal statistics
+2. **Node Exporter Dashboard** (25 points) - Tracks system resources (CPU, memory, disk, network) in real time
+3. **Custom Exporter Dashboard** (45 points) - Collects and visualizes custom metrics from the Valorant database using a Python exporter
+
+### Prerequisites for Monitoring
+
+- **Docker** and **Docker Compose** installed
+- **PostgreSQL** database running (from previous setup)
+- Python 3.8+ with required packages
+
+### Quick Start: Monitoring Stack
+
+1. **Start the Monitoring Services**
+
+   ```bash
+   # Start all services (Prometheus, Grafana, and Exporters)
+   docker-compose up -d
+   ```
+
+2. **Access the Services**
+
+   - **Prometheus**: http://localhost:9090
+   - **Grafana**: http://localhost:3000 (default credentials: admin/admin)
+   - **Database Exporter**: http://localhost:9187/metrics
+   - **Node Exporter**: http://localhost:9100/metrics
+   - **Custom Exporter**: http://localhost:8000/metrics
+
+3. **Import Dashboards to Grafana**
+
+   The project includes three pre-configured dashboard JSON files in the `dashboards/` directory:
+
+   - `Database Exporter-*.json`
+   - `Node Exporter-*.json`
+   - `Custom Exporter-*.json`
+
+   To import:
+
+   - Log into Grafana (http://localhost:3000)
+   - Go to **Dashboards** → **Import**
+   - Upload each JSON file from the `dashboards/` directory
+
+### Dashboard Details
+
+#### 1. Database Exporter Dashboard
+
+Monitors PostgreSQL database performance and statistics:
+
+- **Active Connections**: Number of current database connections
+- **Database Size**: Total database size in bytes and GB
+- **Uptime**: Database server uptime
+- **Read/Write Operations**: Rate of database read and write operations
+- **Query Processing Speed**: Queries per second (QPS)
+- **User Statistics**: Number of users and privileges
+- **Table Statistics**: Total number of tables and rows
+
+**Exporter**: `postgres-exporter` running on port `9187`
+
+#### 2. Node Exporter Dashboard
+
+Monitors system resources in real time:
+
+- **CPU Usage**: Per-core CPU utilization
+- **Load Average**: System load (1, 5, 15 minutes)
+- **Memory**: Total, available, and used memory in GB
+- **RAM Usage**: Memory usage percentage
+- **Disk Space**: Free disk space in GB
+- **Disk I/O**: Read and write operations (bytes/sec)
+- **Network Traffic**: Incoming/outgoing traffic (Mbit/sec)
+- **CPU Temperature**: Processor temperature monitoring
+- **Battery Status**: Battery level and health (for laptops)
+
+**Exporter**: `node-exporter` running on port `9100`
+
+#### 3. Custom Exporter Dashboard
+
+Collects custom metrics from the Valorant database using a Python exporter:
+
+- **Player Statistics**: Total player count, average rating, top player rating
+- **Combat Metrics**: Total kills, deaths, assists across all players
+- **Match Statistics**: Total matches, completed matches
+- **Map Performance**: Average attack/defense win percentages
+- **Agent Metrics**: Total agents tracked, average utilization
+- **Map Activity**: Total map rounds played
+
+**Exporter**: Custom Python exporter running on port `8000`
+
+**Update Frequency**: Metrics are collected every 20 seconds
+
+### Custom Exporter
+
+The custom exporter (`custom_exporter/custom_exporter.py`) collects Valorant-specific metrics from the PostgreSQL database and exposes them in Prometheus format.
+
+**Key Features:**
+
+- Connects to the `data_v` PostgreSQL database
+- Collects 13 custom metrics related to Valorant tournament data
+- Updates metrics every 20 seconds
+- Exposes metrics via HTTP endpoint on port 8000
+- Uses `prometheus_client` library for metric publishing
+
+**Metrics Collected:**
+
+- `valorant_player_count_total` - Total number of players
+- `valorant_average_player_rating` - Average player rating
+- `valorant_top_player_rating` - Highest player rating
+- `valorant_total_kills` - Total kills across all players
+- `valorant_total_deaths` - Total deaths across all players
+- `valorant_total_assists` - Total assists across all players
+- `valorant_matches_total` - Total number of matches
+- `valorant_matches_completed_total` - Number of completed matches
+- `valorant_average_attack_win_percent` - Average attack win percentage
+- `valorant_average_defense_win_percent` - Average defense win percentage
+- `valorant_agents_total` - Total number of agents
+- `valorant_average_agent_utilization` - Average agent utilization
+- `valorant_total_map_rounds_played` - Total map rounds played
+
+### Configuration Files
+
+#### `docker-compose.yml`
+
+Defines all monitoring services:
+
+- Prometheus server
+- Grafana dashboard
+- PostgreSQL exporter
+- Node exporter
+- Custom Python exporter
+
+#### `prometheus.yml`
+
+Prometheus configuration file that:
+
+- Sets scrape interval to 15 seconds
+- Configures targets for all exporters
+- Defines job names for each exporter
+
+#### `custom_exporter/custom_exporter.py`
+
+Python script that:
+
+- Connects to PostgreSQL database
+- Queries Valorant tournament data
+- Exposes metrics via Prometheus client library
+- Runs as a Docker container
+
+### Dashboard Requirements
+
+Each dashboard includes:
+
+- **≥10 PromQL Queries**: At least 10 Prometheus Query Language queries
+- **Function Usage**: 60% of queries use functions (`avg`, `rate`, `sum`, `count`, `time()`) or time filters (`[5m]`, `by()`, `grouping`)
+- **≥10 Visualizations**: Multiple visualization types (time series, gauge, heatmap, bar charts, etc.)
+- **≥4 Visualization Types**: At least 4 different chart types per dashboard
+- **Global Filter**: Dashboard variable configured for filtering across all panels
+- **Alert Rules**: At least one alert rule configured in Grafana
+- **Real-time Updates**: All metrics update in real time
+
+### Verifying the Setup
+
+1. **Check Container Status**
+
+   ```bash
+   docker-compose ps
+   ```
+
+   All containers should show "Up" status.
+
+2. **Verify Prometheus Targets**
+
+   - Navigate to http://localhost:9090/targets
+   - All targets should show "UP" status
+
+3. **Test PromQL Queries**
+
+   - Go to http://localhost:9090/graph
+   - Test queries like:
+     - `up` - Check if exporters are running
+     - `valorant_player_count_total` - Custom metric
+     - `pg_stat_database_numbackends` - Database connections
+
+4. **View Dashboards**
+
+   - Access Grafana at http://localhost:3000
+   - Navigate to imported dashboards
+   - Verify all panels display data correctly
+
+### Troubleshooting Monitoring
+
+1. **Containers Not Starting**
+
+   - Check Docker is running: `docker ps`
+   - View logs: `docker-compose logs [service-name]`
+   - Verify ports are not in use
+
+2. **Exporters Not Accessible**
+
+   - Verify exporter containers are running
+   - Check network connectivity: `docker network ls`
+   - Test endpoints: `curl http://localhost:9187/metrics`
+
+3. **Prometheus Not Scraping**
+
+   - Check `prometheus.yml` configuration
+   - Verify target endpoints in Prometheus UI
+   - Check network connectivity between containers
+
+4. **Grafana Not Showing Data**
+
+   - Verify Prometheus data source is configured
+   - Check time range in dashboard
+   - Verify PromQL queries return data in Prometheus UI
+
+### Stopping the Monitoring Stack
+
+```bash
+# Stop all services
+docker-compose down
+
+# Stop and remove volumes (clears data)
+docker-compose down -v
+```
 
 ## Recent Updates
 
