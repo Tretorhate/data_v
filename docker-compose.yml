@@ -46,21 +46,31 @@ services:
       - '9100:9100'
     restart: unless-stopped
 
-  # Custom Exporter (your Python script; we'll create this later)
-  custom-exporter:
-    build: ./custom_exporter
-    container_name: custom_exporter
+  # Custom Exporter v1 (Database-based - DISABLED for now)
+  # custom-exporter:
+  #   build: ./custom_exporter
+  #   container_name: custom_exporter
+  #   environment:
+  #     - DB_HOST=host.docker.internal
+  #     - DB_PORT=5432
+  #     - DB_NAME=data_v
+  #     - DB_USER=postgres
+  #     - DB_PASSWORD=0412
+  #     - METRIC_REFRESH_SECONDS=20
+  #   extra_hosts:
+  #     - 'host.docker.internal:host-gateway'
+  #   ports:
+  #     - '8000:8000'
+  #   restart: unless-stopped
+
+  # Custom Exporter v2 (External API - OpenWeatherMap)
+  custom-exporter-v2:
+    build: ./custom_exporter_v2
+    container_name: custom_exporter_v2
     environment:
-      - DB_HOST=host.docker.internal
-      - DB_PORT=5432
-      - DB_NAME=data_v
-      - DB_USER=postgres
-      - DB_PASSWORD=0412
-      - METRIC_REFRESH_SECONDS=20
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
+      - LOG_LEVEL=INFO
     ports:
-      - '8000:8000' # Or whatever port you expose
+      - '8001:8001'
     restart: unless-stopped
 
 volumes:

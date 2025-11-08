@@ -188,6 +188,10 @@ data_v/
 │   ├── custom_exporter.py
 │   ├── Dockerfile
 │   └── requirements.txt
+├── custom_exporter_v2/
+│   ├── custom_exporter.py
+│   ├── Dockerfile
+│   └── requirements.txt
 ├── dashboards/
 │   ├── Custom Exporter-*.json
 │   ├── Database Exporter-*.json
@@ -424,7 +428,8 @@ The monitoring stack consists of three comprehensive dashboards:
    - **Grafana**: http://localhost:3000 (default credentials: admin/admin)
    - **Database Exporter**: http://localhost:9187/metrics
    - **Node Exporter**: http://localhost:9100/metrics
-   - **Custom Exporter**: http://localhost:8000/metrics
+   - **Custom Exporter v2 (Weather)**: http://localhost:8001/metrics
+   - **Custom Exporter v1 (Valorant DB)**: http://localhost:8000/metrics (disabled)
 
 3. **Import Dashboards to Grafana**
 
@@ -474,7 +479,19 @@ Monitors system resources in real time:
 
 #### 3. Custom Exporter Dashboard
 
-Collects custom metrics from the Valorant database using a Python exporter:
+Collects custom metrics from external APIs using a Python exporter. The project includes two custom exporter implementations:
+
+**Currently Active: Custom Exporter v2 (OpenWeatherMap API)**
+
+- **Weather Metrics**: Temperature, humidity, pressure, wind speed/direction
+- **Atmospheric Conditions**: Cloudiness, visibility, rain/snow volume
+- **Additional Data**: Feels-like temperature, UV index, sunrise/sunset times
+
+**Exporter**: Custom Python exporter running on port `8001`
+
+**Update Frequency**: Metrics are collected every 20 seconds
+
+**Alternative: Custom Exporter v1 (Valorant Database - Currently Disabled)**
 
 - **Player Statistics**: Total player count, average rating, top player rating
 - **Combat Metrics**: Total kills, deaths, assists across all players
@@ -483,13 +500,55 @@ Collects custom metrics from the Valorant database using a Python exporter:
 - **Agent Metrics**: Total agents tracked, average utilization
 - **Map Activity**: Total map rounds played
 
-**Exporter**: Custom Python exporter running on port `8000`
+**Exporter**: Custom Python exporter running on port `8000` (disabled in docker-compose.yml)
 
-**Update Frequency**: Metrics are collected every 20 seconds
+### Custom Exporter v2 (OpenWeatherMap API)
 
-### Custom Exporter
+The custom exporter v2 (`custom_exporter_v2/custom_exporter.py`) fetches weather data from the OpenWeatherMap API and exposes metrics in Prometheus format.
 
-The custom exporter (`custom_exporter/custom_exporter.py`) collects Valorant-specific metrics from the PostgreSQL database and exposes them in Prometheus format.
+**Key Features:**
+
+- Fetches real-time weather data from OpenWeatherMap API
+- Collects 13 custom weather metrics
+- Updates metrics every 20 seconds
+- Exposes metrics via HTTP endpoint on port 8001
+- Uses `prometheus_client` library for metric publishing
+- Includes retry logic and error handling for API calls
+
+**Setup Requirements:**
+
+1. **Get an OpenWeatherMap API Key:**
+
+   - Sign up at https://openweathermap.org/api
+   - Free tier includes 1,000 API calls/day (sufficient for 20-second intervals)
+   - Copy your API key
+
+2. **Set the API Key:**
+   - Edit `custom_exporter_v2/custom_exporter.py` and set `API_KEY = "your_api_key_here"`
+   - Or use environment variable: `OPENWEATHER_API_KEY=your_api_key_here`
+   - Configure city: `CITY = "London"` (or use `WEATHER_CITY` environment variable)
+
+**Metrics Collected:**
+
+- `weather_temperature_celsius` - Current temperature in Celsius (labeled by city)
+- `weather_humidity_percent` - Humidity percentage
+- `weather_pressure_hpa` - Atmospheric pressure in hPa
+- `weather_wind_speed_mps` - Wind speed in m/s
+- `weather_wind_direction_deg` - Wind direction in degrees
+- `weather_cloudiness_percent` - Cloud coverage percentage
+- `weather_visibility_km` - Visibility in kilometers
+- `weather_rain_volume_mm` - Rain volume in last hour (mm)
+- `weather_snow_volume_mm` - Snow volume in last hour (mm)
+- `weather_feels_like_celsius` - Feels-like temperature
+- `weather_uv_index` - UV index (requires One Call API for full functionality)
+- `weather_sunrise_timestamp` - Sunrise timestamp (Unix)
+- `weather_sunset_timestamp` - Sunset timestamp (Unix)
+
+All metrics include a `city` label for filtering.
+
+### Custom Exporter v1 (Valorant Database - Optional)
+
+The custom exporter v1 (`custom_exporter/custom_exporter.py`) collects Valorant-specific metrics from the PostgreSQL database. This exporter is currently disabled in `docker-compose.yml` but can be enabled if needed.
 
 **Key Features:**
 
@@ -497,9 +556,8 @@ The custom exporter (`custom_exporter/custom_exporter.py`) collects Valorant-spe
 - Collects 13 custom metrics related to Valorant tournament data
 - Updates metrics every 20 seconds
 - Exposes metrics via HTTP endpoint on port 8000
-- Uses `prometheus_client` library for metric publishing
 
-**Metrics Collected:**
+**Metrics Collected (when enabled):**
 
 - `valorant_player_count_total` - Total number of players
 - `valorant_average_player_rating` - Average player rating
@@ -535,14 +593,21 @@ Prometheus configuration file that:
 - Configures targets for all exporters
 - Defines job names for each exporter
 
-#### `custom_exporter/custom_exporter.py`
+#### `custom_exporter_v2/custom_exporter.py`
 
 Python script that:
 
-- Connects to PostgreSQL database
-- Queries Valorant tournament data
+- Fetches weather data from OpenWeatherMap API
+- Collects 13 weather-related metrics
 - Exposes metrics via Prometheus client library
 - Runs as a Docker container
+- Includes retry logic and error handling
+
+**Note:** To use this exporter, you need to:
+
+1. Get an OpenWeatherMap API key from https://openweathermap.org/api
+2. Set `API_KEY` in `custom_exporter_v2/custom_exporter.py`
+3. Optionally configure the city to monitor (defaults to "London")
 
 ### Dashboard Requirements
 
