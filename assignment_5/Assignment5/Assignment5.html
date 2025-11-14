@@ -1,0 +1,712 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Assignment #5</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="26a6e0d1-7843-8010-9716-d6b976611d0f" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">✅</span></div><h1 class="page-title">Assignment #5</h1><p class="page-description"></p></header><div class="page-body"><h3 id="2a66e0d1-7843-8017-8b93-c06606b4c81a" class="">Important Information:</h3><ol type="1" id="2a66e0d1-7843-8069-8a4d-d63407fd1348" class="numbered-list" start="1"><li>Deadline — <mark class="highlight-orange_background">Week 10</mark> (you can submit within 1 week after the topic explanation).</li></ol><ol type="1" id="2a66e0d1-7843-804f-85be-f4fd80d9261a" class="numbered-list" start="2"><li>If you cannot attend in person for valid reasons, you can defend your project online only after getting approval in Teams. Without approval, online defense is not allowed.</li></ol><ol type="1" id="2a66e0d1-7843-808c-a4f1-c45d618b4aca" class="numbered-list" start="3"><li>All completed assignments must be uploaded to Moodle. If a student does not provide a GitHub link in Moodle or via Teams, and does not defend the project, the <mark class="highlight-orange_background">grade will be 0</mark>.</li></ol><ol type="1" id="2a66e0d1-7843-80a6-a90c-ce2f4e49b58c" class="numbered-list" start="4"><li>After each assignment, <mark class="highlight-orange_background">update</mark> your GitHub repository before uploading the work to Moodle.</li></ol><ol type="1" id="2a66e0d1-7843-8016-8504-ef098bc74e2c" class="numbered-list" start="5"><li>The defense must be done by r<mark class="highlight-orange_background">unning the scripts live.</mark> All scripts must be fully written and saved in advance.</li></ol><ol type="1" id="2a66e0d1-7843-806d-8eba-f8887bf9b3df" class="numbered-list" start="6"><li><mark class="highlight-orange_background">No penalty</mark> is applied for this assignment, as I will assign your <mark class="highlight-orange_background">endterm grades and final grades</mark> immediately after its submission. After the Week 10, it will <mark class="highlight-orange_background">no longer be possible</mark> to submit the assignment.</li></ol><h3 id="2a66e0d1-7843-80d0-a696-d7cdb1d2dbf7" class="">What to Do?</h3><ul id="2a66e0d1-7843-80c5-a13c-e82ffb1ee3a5" class="bulleted-list"><li style="list-style-type:disc">Use the Open3D library in Python.</li></ul><ul id="2a66e0d1-7843-802a-873e-d1b78d9ae189" class="bulleted-list"><li style="list-style-type:disc">You can take any 3D object (formats <code>.ply</code>, <code>.obj</code>, <code>.stl</code>, <code>.off</code>, etc.).<ul id="2a66e0d1-7843-8040-a248-fa861ee2f113" class="bulleted-list"><li style="list-style-type:circle">Do not use the same models - <mark class="highlight-orange_background">each student must have a unique 3D model</mark>.</li></ul><ul id="2a66e0d1-7843-80f4-8f1a-fda9be27383d" class="bulleted-list"><li style="list-style-type:circle">You can find free models on websites such as <a href="https://free3d.com/3d-models">https://free3d.com/3d-models</a> and others.</li></ul></li></ul><ul id="2a66e0d1-7843-80be-95bc-ed5bb25ab5ae" class="bulleted-list"><li style="list-style-type:disc">Perform each operation <mark class="highlight-orange_background">step by step</mark>, visualizing the results in one script. After each stage, a new window (<code>draw_geometries</code>) should open.</li></ul><ul id="2a66e0d1-7843-8001-8982-fce1c0a8ba03" class="bulleted-list"><li style="list-style-type:disc">After <strong>each step</strong>, <mark class="highlight-orange_background">you must explain what you understood and print to the console</mark>:<ul id="2a66e0d1-7843-80c1-a053-d49ee9d857bb" class="bulleted-list"><li style="list-style-type:circle">number of vertices (points),</li></ul><ul id="2a66e0d1-7843-8087-bc0c-fba6c84dff1b" class="bulleted-list"><li style="list-style-type:circle">number of triangles (if applicable),</li></ul><ul id="2a66e0d1-7843-806f-80ca-f3326a9e2e82" class="bulleted-list"><li style="list-style-type:circle">number of voxels (if applicable),</li></ul><ul id="2a66e0d1-7843-805e-9dc3-fe754d454d70" class="bulleted-list"><li style="list-style-type:circle">presence of color / normals / intersections.</li></ul></li></ul><h3 id="2a66e0d1-7843-8091-bc8e-c9c31f5e2234" class=""><strong>Tasks</strong>: </h3><p id="2a66e0d1-7843-80ef-bc43-f5d49dcffec2" class=""><mark class="highlight-red_background">The work is accepted only if all stages are completed. Missing even one step — 0 points. Full and correct completion of all 7 steps — 100 points.</mark></p><h3 id="2a66e0d1-7843-806f-b2a7-ca2a29f2e07c" class="">1. Loading and Visualization</h3><ul id="2a66e0d1-7843-8016-aaaa-ea0ab08786a0" class="bulleted-list"><li style="list-style-type:disc">Load any 3D file (<code>ply</code>, <code>obj</code>, <code>stl</code>, etc.).</li></ul><ul id="2a66e0d1-7843-8022-b5ee-e80b399e4adc" class="bulleted-list"><li style="list-style-type:disc">Display the original model.</li></ul><ul id="2a66e0d1-7843-80bc-abde-d410215fd8c7" class="bulleted-list"><li style="list-style-type:disc">Print to the console:<ul id="2a66e0d1-7843-80f3-9636-dfc472fe519d" class="bulleted-list"><li style="list-style-type:circle">number of vertices,</li></ul><ul id="2a66e0d1-7843-807c-9128-f97773db4557" class="bulleted-list"><li style="list-style-type:circle">number of triangles,</li></ul><ul id="2a66e0d1-7843-8051-b067-de12eda5c0e6" class="bulleted-list"><li style="list-style-type:circle">presence of color and normals.</li></ul></li></ul><figure id="2a66e0d1-7843-80ab-bf66-f3a3f6fab70f" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-02-27.png"><img style="width:432px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-02-27.png"/></a></figure><h3 id="2a66e0d1-7843-801d-adfc-d30723ed1291" class="">2. Conversion to Point Cloud</h3><ul id="2a66e0d1-7843-8047-aa32-ee9bcf915a09" class="bulleted-list"><li style="list-style-type:disc">Convert the model into a <strong>point cloud</strong> using <code>o3d.io.read_point_cloud()</code>.</li></ul><ul id="2a66e0d1-7843-80af-85c2-e23a5c2961d5" class="bulleted-list"><li style="list-style-type:disc">Display the cloud.</li></ul><ul id="2a66e0d1-7843-80ff-acee-db0455e121e9" class="bulleted-list"><li style="list-style-type:disc">Print to the console:<ul id="2a66e0d1-7843-8031-84c5-e18cbd37b686" class="bulleted-list"><li style="list-style-type:circle">number of vertices,</li></ul><ul id="2a66e0d1-7843-80c7-89fa-c7156d807978" class="bulleted-list"><li style="list-style-type:circle">presence of color (if applicable).</li></ul></li></ul><figure id="2a66e0d1-7843-80d8-ab27-e14edb038f07" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-02-44.png"><img style="width:432px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-02-44.png"/></a></figure><h3 id="2a66e0d1-7843-80b4-ba03-e480cb874cb4" class="">3. Surface Reconstruction from Point Cloud</h3><ul id="2a66e0d1-7843-8032-abc1-fb080cb44f82" class="bulleted-list"><li style="list-style-type:disc">Reconstruct a <strong>mesh</strong> using <code>create_from_point_cloud_poisson()</code>.</li></ul><ul id="2a66e0d1-7843-806d-80bd-fc42776a1e5f" class="bulleted-list"><li style="list-style-type:disc">Remove artifacts using the <code>.crop()</code> method with a bounding box.</li></ul><ul id="2a66e0d1-7843-80b3-8205-e0acc479b7a8" class="bulleted-list"><li style="list-style-type:disc">Display the reconstructed object.</li></ul><ul id="2a66e0d1-7843-8000-850f-ffd8400e729e" class="bulleted-list"><li style="list-style-type:disc">Print to the console:<ul id="2a66e0d1-7843-80d3-b3b6-d7c8ba867595" class="bulleted-list"><li style="list-style-type:circle">number of vertices,</li></ul><ul id="2a66e0d1-7843-8029-9c80-ff5abdbb88ef" class="bulleted-list"><li style="list-style-type:circle">number of triangles,</li></ul><ul id="2a66e0d1-7843-8063-b795-f2163009d815" class="bulleted-list"><li style="list-style-type:circle">presence of color.</li></ul></li></ul><figure id="2a66e0d1-7843-80ec-8e6a-d80339aaaf64" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-03-03.png"><img style="width:432px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-03-03.png"/></a></figure><h3 id="2a66e0d1-7843-807b-8e38-ec385f0bbf59" class="">4. Voxelization</h3><ul id="2a66e0d1-7843-808a-9324-d3570d95e560" class="bulleted-list"><li style="list-style-type:disc">Convert the point cloud into a <strong>voxel grid</strong> (<code>create_from_point_cloud</code>).</li></ul><ul id="2a66e0d1-7843-8048-878e-de0899c92fa5" class="bulleted-list"><li style="list-style-type:disc">Adjust the voxel size (<code>voxel_size = 0.05</code> or another).</li></ul><ul id="2a66e0d1-7843-801e-93e1-db1c97693949" class="bulleted-list"><li style="list-style-type:disc">Display the voxels.</li></ul><ul id="2a66e0d1-7843-80a9-9c67-e5c3f8ffbd22" class="bulleted-list"><li style="list-style-type:disc">Print to the console:<ul id="2a66e0d1-7843-8039-9f91-c4b331bd2f25" class="bulleted-list"><li style="list-style-type:circle">number of vertices,</li></ul><ul id="2a66e0d1-7843-8076-8d7c-fc85b5beec03" class="bulleted-list"><li style="list-style-type:circle">presence of color.</li></ul></li></ul><figure id="2a66e0d1-7843-80c2-a744-e98aa7bf0f24" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-03-15.png"><img style="width:432px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-03-15.png"/></a></figure><h3 id="2a66e0d1-7843-8089-bac1-d242b6bfe2c8" class="">5. Adding a Plane</h3><ul id="2a66e0d1-7843-80e5-ac6a-fab11945e975" class="bulleted-list"><li style="list-style-type:disc">Create any plane in the scene — horizontal, vertical, or inclined.</li></ul><ul id="2a66e0d1-7843-8036-a9d3-d85b45f083e6" class="bulleted-list"><li style="list-style-type:disc">Place it next to the object.</li></ul><ul id="2a66e0d1-7843-805d-bbf8-c3e92f6d922d" class="bulleted-list"><li style="list-style-type:disc">Display them together.</li></ul><figure id="2a66e0d1-7843-80ed-8d60-c17107b288dc" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-03-33.png"><img style="width:432px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-03-33.png"/></a></figure><h3 id="2a66e0d1-7843-8013-86d9-ff5bd41969c1" class="">6. Surface Clipping</h3><ul id="2a66e0d1-7843-8076-bb78-c642dba5f41e" class="bulleted-list"><li style="list-style-type:disc">Implement a simple intersection: remove all points that lie on the “right side” of the plane.</li></ul><ul id="2a66e0d1-7843-80a7-8e30-e5aea087c647" class="bulleted-list"><li style="list-style-type:disc">Show the model <strong>after clipping</strong>.</li></ul><ul id="2a66e0d1-7843-8051-90c9-d9d913596805" class="bulleted-list"><li style="list-style-type:disc">Print to the console:<ul id="2a66e0d1-7843-8046-ba25-f25edd4d0f1d" class="bulleted-list"><li style="list-style-type:circle">number of remaining vertices,</li></ul><ul id="2a66e0d1-7843-8057-be03-ce97b162a270" class="bulleted-list"><li style="list-style-type:circle">number of triangles,</li></ul><ul id="2a66e0d1-7843-8038-b817-dcf579f63db7" class="bulleted-list"><li style="list-style-type:circle">presence of color and normals.</li></ul></li></ul><figure id="2a66e0d1-7843-80a1-a7be-c1c898101445" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-04-15.png"><img style="width:432px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-04-15.png"/></a></figure><h3 id="2a66e0d1-7843-80f1-8b01-ebd5ecf9846f" class="">7. Working with Color and Extremes</h3><ul id="2a66e0d1-7843-80cd-83bd-ca2e40bd460e" class="bulleted-list"><li style="list-style-type:disc">Remove the original colors and apply your own gradient (along the X, Y, or Z axis).</li></ul><ul id="2a66e0d1-7843-80b6-bfe7-d4b8bdb2994f" class="bulleted-list"><li style="list-style-type:disc">Find the extreme points (minimum and maximum along the chosen axis).</li></ul><ul id="2a66e0d1-7843-8097-8c8a-db32036f8322" class="bulleted-list"><li style="list-style-type:disc">Highlight them (sphere, cube, or wireframe).</li></ul><ul id="2a66e0d1-7843-80b8-a8f6-f2b6b9c947b2" class="bulleted-list"><li style="list-style-type:disc">Print to the console:<ul id="2a66e0d1-7843-802a-a9a6-cb195e640e14" class="bulleted-list"><li style="list-style-type:circle">coordinates of the extrema.</li></ul></li></ul><div id="2a66e0d1-7843-8038-b258-eff9b578cd30" class="column-list"><div id="2a66e0d1-7843-8035-817a-e2195b3843b5" style="width:50%" class="column"><figure id="2a66e0d1-7843-8072-a113-f26c7633429f" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-04-41.png"><img style="width:432px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-04-41.png"/></a></figure></div><div id="2a66e0d1-7843-8096-a7ef-d6e31eb9a64e" style="width:50%" class="column"><figure id="2a66e0d1-7843-80c9-b1de-ecad8aaf5566" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-04-55.png"><img style="width:384px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-04-55.png"/></a></figure></div></div><hr id="2a66e0d1-7843-8065-a47f-e00a507c7dd6"/><p id="2a66e0d1-7843-803d-9a4f-fc59b107585a" class="">
+</p><p id="2a66e0d1-7843-8037-8a8d-e360a3584d9b" class="">
+</p><p id="2a66e0d1-7843-80e7-9818-c39976800c06" class="">
+</p><p id="2a66e0d1-7843-8006-8292-f5e9218acab5" class="">
+</p><p id="2a66e0d1-7843-8029-b20c-e6db83e7623d" class="">
+</p><p id="2a66e0d1-7843-80d4-a94d-daaf30f7bce2" class="">
+</p><hr id="2a66e0d1-7843-8059-98b8-c710eb11e6f5"/><h3 id="2a66e0d1-7843-80ea-ab8c-fbc7eb5d4546" class="">Важная информация:</h3><ol type="1" id="2a66e0d1-7843-8023-9779-df6dff5c8924" class="numbered-list" start="1"><li>Дедлайн — <mark class="highlight-orange_background">10-ая неделя</mark> (можно сдавать в течение 1 недели после объяснения темы). </li></ol><ol type="1" id="2a66e0d1-7843-805c-86af-c00e4e44dc02" class="numbered-list" start="2"><li>Если вы не сможете присутствовать по уважительным причинам, можно защитить проект онлайн, но только после согласования в Teams. Без согласования онлайн-защита не допускается.</li></ol><ol type="1" id="2a66e0d1-7843-80f0-8d73-d427d78a0d5f" class="numbered-list" start="3"><li>Все выполненные задания необходимо прикреплять в Moodle. Если студент не предоставит ссылку на GitHub в Moodle или не отправит её через Teams, а также не защитит проект, то оценка за задание будет <mark class="highlight-orange_background">0 баллов</mark>.</li></ol><ol type="1" id="2a66e0d1-7843-80bd-8fca-d342f71b01b0" class="numbered-list" start="4"><li>После каждого выполненного ассайнмента обязательно <mark class="highlight-orange_background">обновляйте</mark> свой репозиторий перед загрузкой работы в Moodle. </li></ol><ol type="1" id="2a66e0d1-7843-80b4-9d2b-ce17b287f661" class="numbered-list" start="5"><li>Скриншоты с заданиями загружать в GitHub <mark class="highlight-orange_background">запрещено</mark>. Защита проводится только через <mark class="highlight-orange_background">запуск скриптов в реальном времени</mark>. Все скрипты должны быть полностью прописаны и сохранены <mark class="highlight-orange_background">заранее</mark>.</li></ol><ol type="1" id="2a66e0d1-7843-80b3-8b00-d0f9c1cfb847" class="numbered-list" start="6"><li>На данный ассайнмент <mark class="highlight-orange_background">штраф не предусмотрен</mark>, так как сразу после сдачи задания я выставлю вам <mark class="highlight-orange_background">итоговые оценки</mark> за ендтерм и файнал. После десятой недели сдать задание уже <mark class="highlight-orange_background">не будет возможно</mark>.</li></ol><h3 id="2a66e0d1-7843-8016-ad72-eaa63a5d3a53" class="">Что делать?</h3><ul id="2a66e0d1-7843-8044-8722-e580196475d9" class="bulleted-list"><li style="list-style-type:disc">Используется библиотека Open3D на Python.</li></ul><ul id="2a66e0d1-7843-807f-b14b-d19e9e8f776a" class="bulleted-list"><li style="list-style-type:disc">Можно взять любой 3D-объект (форматы <code>.ply</code>, <code>.obj</code>, <code>.stl</code>, <code>.off</code> и др.).<ul id="2a66e0d1-7843-802a-9770-c627ef368d4f" class="bulleted-list"><li style="list-style-type:circle">Не берите одинаковые модели — <mark class="highlight-orange_background">у каждого студента должна быть уникальная 3D-модель</mark>.</li></ul><ul id="2a66e0d1-7843-8017-b5ce-ce12640b6c83" class="bulleted-list"><li style="list-style-type:circle">Можно искать бесплатные модели на сайтах вроде <a href="https://free3d.com/3d-models">https://free3d.com/3d-models</a> и другие. </li></ul></li></ul><ul id="2a66e0d1-7843-8016-890d-f41054ed907a" class="bulleted-list"><li style="list-style-type:disc">Каждую операцию <mark class="highlight-orange_background">выполняйте поэтапно</mark>, визуализируя результаты одним скриптом.<br/>После каждого этапа должно открываться новое окно (<code>draw_geometries</code>).</li></ul><ul id="2a66e0d1-7843-80a8-a9f5-e4299c632e9b" class="bulleted-list"><li style="list-style-type:disc">После <strong>каждого шага</strong> <mark class="highlight-orange_background">обязательно расскажите что вы поняли и выводите в консоль</mark>:<ul id="2a66e0d1-7843-8031-9e75-c908edb389c6" class="bulleted-list"><li style="list-style-type:circle">количество вершин (points),</li></ul><ul id="2a66e0d1-7843-8017-8633-caf7278a081a" class="bulleted-list"><li style="list-style-type:circle">количество треугольников (если применимо),</li></ul><ul id="2a66e0d1-7843-807f-9795-f0ee3c5d2e6b" class="bulleted-list"><li style="list-style-type:circle">количество вокселей (если применимо),</li></ul><ul id="2a66e0d1-7843-8071-8439-c87479d67aa9" class="bulleted-list"><li style="list-style-type:circle">наличие цвета / нормалей / пересечений.</li></ul></li></ul><h3 id="2a66e0d1-7843-8076-89f1-e4701507c391" class="">Задания: </h3><p id="2a66e0d1-7843-8036-b4dc-fee8935644ab" class=""><mark class="highlight-red_background">Работа принимается только при выполнении всех этапов. Пропуск хотя бы одного пункта — 0 баллов. Полное и корректное выполнение всех 7 шагов — 100 баллов.</mark></p><h3 id="2a66e0d1-7843-80cc-a693-d03c338e5a41" class="">1. Загрузка и визуализация</h3><ul id="2a66e0d1-7843-8003-a4eb-cb0789b96739" class="bulleted-list"><li style="list-style-type:disc">Загрузите любой 3D-файл (<code>ply</code>, <code>obj</code>, <code>stl</code> и т.д.).</li></ul><ul id="2a66e0d1-7843-80f9-bd63-d866a7383e43" class="bulleted-list"><li style="list-style-type:disc">Отобразите исходную модель.</li></ul><ul id="2a66e0d1-7843-8062-8949-d8d4dc8945dd" class="bulleted-list"><li style="list-style-type:disc">Выведите в консоль:<ul id="2a66e0d1-7843-8097-a04e-d26e6eb1e832" class="bulleted-list"><li style="list-style-type:circle">количество вершин,</li></ul><ul id="2a66e0d1-7843-8098-94d2-d2823c82e8ab" class="bulleted-list"><li style="list-style-type:circle">количество треугольников,</li></ul><ul id="2a66e0d1-7843-8013-9c18-d19cd6324636" class="bulleted-list"><li style="list-style-type:circle">наличие цвета и нормалей.</li></ul></li></ul><figure id="2a66e0d1-7843-805c-81b0-fe31e1bc48fb" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-02-27.png"><img style="width:432px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-02-27.png"/></a></figure><h3 id="2a66e0d1-7843-80ce-aff2-d53fcf44981f" class="">2. Преобразование в облако точек</h3><ul id="2a66e0d1-7843-800d-8240-f45c8d75cf09" class="bulleted-list"><li style="list-style-type:disc">Преобразуйте модель в <strong>point cloud</strong> через <code>o3d.io.read_point_cloud()</code></li></ul><ul id="2a66e0d1-7843-802e-9aa9-f9bddb8f2c84" class="bulleted-list"><li style="list-style-type:disc">Отобразите облако.</li></ul><ul id="2a66e0d1-7843-80e2-8a3b-fcd421dfd7d9" class="bulleted-list"><li style="list-style-type:disc">Выведите в консоль:<ul id="2a66e0d1-7843-80a5-996b-e0bfa9875686" class="bulleted-list"><li style="list-style-type:circle">количество вершин,</li></ul><ul id="2a66e0d1-7843-8015-be2d-d957d424ea2f" class="bulleted-list"><li style="list-style-type:circle">наличие цвета (если приемлимо).</li></ul></li></ul><figure id="2a66e0d1-7843-8003-adab-f4bab338e09c" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-02-44.png"><img style="width:432px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-02-44.png"/></a></figure><h3 id="2a66e0d1-7843-80d1-a778-fdcaeef415de" class="">3. Реконструкция поверхности из облака точек</h3><ul id="2a66e0d1-7843-808e-af61-d9fc975691ef" class="bulleted-list"><li style="list-style-type:disc">Восстановите <strong>mesh</strong> через <code>create_from_point_cloud_poisson()</code>.</li></ul><ul id="2a66e0d1-7843-80fc-bf64-f67de80e0f75" class="bulleted-list"><li style="list-style-type:disc">Удалите артефакты методом <code>.crop()</code> по bounding box.</li></ul><ul id="2a66e0d1-7843-801e-b289-d4178c2b0779" class="bulleted-list"><li style="list-style-type:disc">Отобразите реконструированный объект.</li></ul><ul id="2a66e0d1-7843-802c-abc8-e53500621bd5" class="bulleted-list"><li style="list-style-type:disc">Выведите в консоль:<ul id="2a66e0d1-7843-80ae-a0e5-c467261ce1d0" class="bulleted-list"><li style="list-style-type:circle">количество вершин,</li></ul><ul id="2a66e0d1-7843-80d4-9376-eafd09afa949" class="bulleted-list"><li style="list-style-type:circle">количество треугольников,</li></ul><ul id="2a66e0d1-7843-8097-b19c-d3a4a8cef538" class="bulleted-list"><li style="list-style-type:circle">наличие цвета.</li></ul></li></ul><figure id="2a66e0d1-7843-802c-8710-cf1d9739b6de" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-03-03.png"><img style="width:432px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-03-03.png"/></a></figure><h3 id="2a66e0d1-7843-8029-8918-deb34a42d828" class="">4. Вокселизация</h3><ul id="2a66e0d1-7843-804f-b103-c680071a4ae5" class="bulleted-list"><li style="list-style-type:disc">Превратите облако точек в <strong>воксельную сетку</strong> (<code>create_from_point_cloud</code>).</li></ul><ul id="2a66e0d1-7843-8086-815f-c0020391d855" class="bulleted-list"><li style="list-style-type:disc">Подберите размер вокселя (<code>voxel_size = 0.05</code> или другой).</li></ul><ul id="2a66e0d1-7843-8036-894f-de4f30af6075" class="bulleted-list"><li style="list-style-type:disc">Отобразите воксели.</li></ul><ul id="2a66e0d1-7843-807e-842a-f08885bd244b" class="bulleted-list"><li style="list-style-type:disc">Выведите в консоль:<ul id="2a66e0d1-7843-80d2-b355-db9115e28231" class="bulleted-list"><li style="list-style-type:circle">количество вершин,</li></ul><ul id="2a66e0d1-7843-803b-9359-c453f514b1f4" class="bulleted-list"><li style="list-style-type:circle">наличие цвета.</li></ul></li></ul><figure id="2a66e0d1-7843-8004-baed-c3627ca5ac87" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-03-15.png"><img style="width:432px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-03-15.png"/></a></figure><h3 id="2a66e0d1-7843-80c6-b718-c9bca61e3987" class="">5. Добавление плоскости</h3><ul id="2a66e0d1-7843-800c-88cc-fd093747a964" class="bulleted-list"><li style="list-style-type:disc">Создайте любую плоскость (plane) в сцене — горизонтальную, вертикальную или наклонную.</li></ul><ul id="2a66e0d1-7843-80e5-87fa-fb644f31f716" class="bulleted-list"><li style="list-style-type:disc">Расположите рядом с объектом.</li></ul><ul id="2a66e0d1-7843-80f8-9869-fc7b95bcaf15" class="bulleted-list"><li style="list-style-type:disc">Отобразите их вместе.</li></ul><figure id="2a66e0d1-7843-8053-8f39-c78f4ef5cf40" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-03-33.png"><img style="width:432px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-03-33.png"/></a></figure><h3 id="2a66e0d1-7843-8045-a075-c59a71c4fbf4" class="">6. Обрезка по поверхности (клиппинг)</h3><ul id="2a66e0d1-7843-80e7-a769-ec4d2f00ebf6" class="bulleted-list"><li style="list-style-type:disc">Реализуйте простое пересечение: удалите все точки, которые лежат “по правую сторону” от плоскости.</li></ul><ul id="2a66e0d1-7843-8008-b04e-f0c2642585bf" class="bulleted-list"><li style="list-style-type:disc">Покажите модель <strong>после обрезки</strong>.</li></ul><ul id="2a66e0d1-7843-80bb-91b2-f480849a84b2" class="bulleted-list"><li style="list-style-type:disc">Выведите в консоль:<ul id="2a66e0d1-7843-80fd-9d67-d098e272e575" class="bulleted-list"><li style="list-style-type:circle">количество оставшихся вершин,</li></ul><ul id="2a66e0d1-7843-8039-9b47-d41d30dd2bed" class="bulleted-list"><li style="list-style-type:circle">количество треугольников,</li></ul><ul id="2a66e0d1-7843-804f-b4a6-faedd5d80ac0" class="bulleted-list"><li style="list-style-type:circle">наличие цвета и нормалей.</li></ul></li></ul><figure id="2a66e0d1-7843-806a-815c-d2dd092fcb60" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-04-15.png"><img style="width:432px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-04-15.png"/></a></figure><h3 id="2a66e0d1-7843-80f3-9c04-c84a7e61cf0d" class="">7. Работа с цветом и экстремумами</h3><ul id="2a66e0d1-7843-8095-90a7-ef9d1f87a2b9" class="bulleted-list"><li style="list-style-type:disc">Уберите исходные цвета, задайте собственный градиент (по оси X, Y или Z).</li></ul><ul id="2a66e0d1-7843-808b-8c18-e2f2fa13f363" class="bulleted-list"><li style="list-style-type:disc">Найдите экстремальные точки (минимум и максимум по выбранной оси).</li></ul><ul id="2a66e0d1-7843-8039-8c7e-e8dff4ac655b" class="bulleted-list"><li style="list-style-type:disc">Выделите их (сфера, куб или wireframe).</li></ul><ul id="2a66e0d1-7843-8030-9738-db6b572b81f4" class="bulleted-list"><li style="list-style-type:disc">Выведите в консоль:<ul id="2a66e0d1-7843-8034-b0e4-d557fa3e8a60" class="bulleted-list"><li style="list-style-type:circle">координаты экстремумов.</li></ul></li></ul><div id="2a66e0d1-7843-80ba-853b-ede63347c700" class="column-list"><div id="2a66e0d1-7843-80cf-831a-d49ace0fa025" style="width:50%" class="column"><figure id="2a66e0d1-7843-80df-a57f-c47bfc2606be" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-04-41.png"><img style="width:432px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-04-41.png"/></a></figure></div><div id="2a66e0d1-7843-80f1-97f7-f8eceefc3102" style="width:50%" class="column"><figure id="2a66e0d1-7843-8015-971b-cadef421b377" class="image"><a href="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-04-55.png"><img style="width:384px" src="Assignment5/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_%D0%BE%D1%82_2025-11-10_02-04-55.png"/></a></figure></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

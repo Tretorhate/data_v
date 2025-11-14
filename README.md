@@ -184,6 +184,16 @@ data_v/
 │       ├── Assignment4.html
 │       ├── Assignment4.pdf
 │       └── image.png
+├── assignment_5/
+│   ├── Assignment5/
+│   │   ├── Assignment5.html
+│   │   └── object/
+│   │       └── coffeecup/
+│   │           ├── coffee_cup_obj.obj
+│   │           └── 29-coffee_cup_obj.zip
+│   ├── assignment5_solution_coffeecup.py
+│   ├── README.md
+│   └── requirements.txt
 ├── custom_exporter/
 │   ├── custom_exporter.py
 │   ├── Dockerfile
@@ -686,7 +696,60 @@ docker-compose down
 docker-compose down -v
 ```
 
+## Assignment 5: 3D Object Processing with Open3D
+
+This assignment demonstrates 3D object processing using the Open3D library in Python. It covers advanced 3D data manipulation techniques including mesh processing, point cloud operations, surface reconstruction, and voxelization.
+
+### Overview
+
+Assignment 5 focuses on working with 3D objects using Python's Open3D library. The assignment includes 7 comprehensive tasks that demonstrate understanding of 3D geometry, mesh manipulation, and visualization.
+
+### 3D Model
+
+- **Model**: Coffee Cup (Low Poly)
+- **Format**: OBJ
+- **Location**: `assignment_5/Assignment5/object/coffeecup/coffee_cup_obj.obj`
+
+### Tasks Implemented
+
+1. **Loading and Visualization** - Load 3D OBJ files with gradient coloring
+2. **Point Cloud Conversion** - Convert mesh to point cloud with uniform sampling
+3. **Surface Reconstruction** - Rebuild mesh from point cloud using Poisson reconstruction
+4. **Voxelization** - Convert point cloud to voxel grid representation
+5. **Plane Addition** - Add geometric plane intersecting the object
+6. **Surface Clipping** - Clip mesh using plane to show cross-sections
+7. **Color and Extremes** - Apply gradient coloring and detect extreme points
+
+### Quick Start
+
+```bash
+cd assignment_5
+pip install -r requirements.txt
+python assignment5_solution_coffeecup.py
+```
+
+### Detailed Documentation
+
+For complete documentation about Assignment 5, including:
+- Detailed task descriptions
+- Installation instructions
+- Visualization controls
+- Technical implementation notes
+
+Please refer to: `assignment_5/README.md`
+
+### Features
+
+- Automatic handling of quad-based OBJ files
+- Beautiful gradient coloring for visualization
+- KD-tree based color transfer for reconstructed meshes
+- Interactive 3D visualization with mouse controls
+- Comprehensive console output for each task
+- Support for multiple 3D model formats
+
 ## Recent Updates
+
+- **Assignment 5: 3D Object Processing** - Complete implementation of 7 tasks with Open3D library for 3D mesh and point cloud processing
 
 - Interactive Time Slider (Plotly)
 

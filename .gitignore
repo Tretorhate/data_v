@@ -20,3 +20,11 @@ Assignment3.pdf
 
 # Environment variables
 .env
+
+# Assignment 5 - Alternative solution files (sword and couch)
+assignment5_solution_sword.py
+assignment5_solution_couch.py
+assignment_5/Assignment5/object/sting/
+assignment_5/Assignment5/object/sofa/
+
+*.zip
